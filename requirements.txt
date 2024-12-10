@@ -1,0 +1,7 @@
+fastapi[standard]
+psycopg[binary]
+sqlalchemy
+python-dotenv
+web3
+pydantic-settings
+pyjwt==2.9.0
