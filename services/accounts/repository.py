@@ -1,8 +1,7 @@
 import psycopg
 import sqlalchemy.exc
-from fastapi import Depends, HTTPException
-from sqlalchemy import CursorResult
-from starlette import status
+from fastapi import Depends
+from sqlalchemy import CursorResult, select
 
 from core.infrastructures import Database
 from core.schema import accounts
@@ -40,3 +39,9 @@ class Repository:
             await c.commit()
             return cursor.mappings().fetchone()
 
+    async def get_list(self):
+        async with self.engine.connect() as c:
+            cursor: CursorResult = await c.execute(
+                select(accounts)
+            )
+            return cursor.scalars()

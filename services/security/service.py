@@ -7,7 +7,7 @@ import core.config
 from core.infrastructures import w3
 from core.security import TokenManager, TokenTypes
 from services.security.dto import TokenResponseModel
-from services.security.exc import InvalidAddress, InvalidSignature
+from services.security.exc import InvalidAddress, InvalidSignature, AddressNotFound
 from services.security.repository import Repository
 
 
@@ -19,17 +19,18 @@ class Service:
     async def auth(self, form: OAuth2PasswordRequestForm):
         if not w3.is_address(form.username):
             raise InvalidAddress
+
         signable_message = encode_defunct(text=core.config.settings.RAW_MESSAGE_FOR_SING)
-        recovered_address = w3.eth.account.recover_message(signable_message, signature=signed_message.signature)
+        recovered_address = w3.eth.account.recover_message(signable_message, signature=form.password)
         if recovered_address.lower() != form.username.lower():
             raise InvalidSignature
         result = await self.repository.check_address(recovered_address)
         if result is not None:
-            access_token = TokenManager.create({"sub": "result"}, TokenTypes.ACCESS)
+            access_token = TokenManager.create({"sub": result}, TokenTypes.ACCESS)
             return TokenResponseModel(
                 access_token=access_token,
                 token_type="Bearer",
                 refresh_token=""
             )
         else:
-            raise
+            raise AddressNotFound

@@ -1,5 +1,4 @@
-from fastapi import Depends, HTTPException
-from starlette import status
+from fastapi import Depends
 
 import core.config
 from core.infrastructures import w3
@@ -24,3 +23,6 @@ class Service:
             raise DeleteRootAddress
         result = await self.repository.delete(address)
         return f"адрес {result['address']} успешно удален"
+
+    async def get_list(self):
+        return await self.repository.get_list()

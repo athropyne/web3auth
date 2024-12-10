@@ -1,10 +1,6 @@
-from typing import Annotated
-
-from fastapi import APIRouter, Depends, Form
+from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
-from pydantic import BaseModel
 from starlette import status
-from typing_extensions import Doc
 
 from core import config
 from services.security import dto
