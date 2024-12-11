@@ -4,7 +4,7 @@ from starlette import status
 
 from core import config
 from services.security import dto
-from services.security.dto import TokenResponseModel
+from services.security.dto import TokenResponseModel, AuthModel
 from services.security.service import Service
 
 router = APIRouter(prefix="/security", tags=["security"])
@@ -26,7 +26,7 @@ async def get_message_for_sign():
              response_model=TokenResponseModel
              )
 async def auth(
-        form: OAuth2PasswordRequestForm = Depends(),
+        model: AuthModel,
         service: Service = Depends(Service)
 ):
-    return await service.auth(form)
+    return await service.auth(model)

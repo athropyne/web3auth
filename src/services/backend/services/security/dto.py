@@ -1,5 +1,9 @@
 from pydantic import BaseModel
 
+class AuthModel(BaseModel):
+    address: str
+    message: str
+    signature: str
 
 class MessageForSignModel(BaseModel):
     message: str

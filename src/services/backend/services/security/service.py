@@ -1,12 +1,11 @@
-from eth_account.datastructures import SignedMessage
 from eth_account.messages import encode_defunct
-from fastapi import Depends, HTTPException
+from fastapi import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 
 import core.config
 from core.infrastructures import w3
 from core.security import TokenManager, TokenTypes
-from services.security.dto import TokenResponseModel
+from services.security.dto import TokenResponseModel, AuthModel
 from services.security.exc import InvalidAddress, InvalidSignature, AddressNotFound
 from services.security.repository import Repository
 
@@ -16,13 +15,13 @@ class Service:
                  repository: Repository = Depends(Repository)):
         self.repository = repository
 
-    async def auth(self, form: OAuth2PasswordRequestForm):
-        if not w3.is_address(form.username):
+    async def auth(self, model: AuthModel):
+        if not w3.is_address(model.address):
             raise InvalidAddress
 
-        signable_message = encode_defunct(text=core.config.settings.RAW_MESSAGE_FOR_SING)
-        recovered_address = w3.eth.account.recover_message(signable_message, signature=form.password)
-        if recovered_address.lower() != form.username.lower():
+        signable_message = encode_defunct(text=model.message)
+        recovered_address = w3.eth.account.recover_message(signable_message, signature=model.signature)
+        if recovered_address.lower() != model.address.lower():
             raise InvalidSignature
         result = await self.repository.check_address(recovered_address)
         if result is not None:
