@@ -9,6 +9,7 @@ from core.config import logger
 from core.schema import accounts
 
 
+w3 = web3.Web3(web3.Web3.HTTPProvider(config.settings.ETH_NODE_HTTP_PROVIDER_URI))
 class Database:
     def __init__(self):
         s = config.settings
@@ -40,6 +41,8 @@ class Database:
         )
 
     async def _minimum_fill(self, connection: AsyncConnection):
+        if not w3.is_address(config.settings.ROOT_ADDRESS):
+            raise ValueError(f"{config.settings.ROOT_ADDRESS} не является валидным адресом")
         cursor: CursorResult = await connection.execute(
             accounts.insert()
             .values(address=config.settings.ROOT_ADDRESS.lower())
@@ -52,4 +55,3 @@ class Database:
         return self.engine
 
 
-w3 = web3.Web3(web3.Web3.HTTPProvider(config.settings.ETH_NODE_HTTP_PROVIDER_URI))

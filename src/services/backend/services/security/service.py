@@ -19,6 +19,7 @@ class Service:
     async def auth(self, model: AuthModel):
         logger.debug(f"проверка адреса {model.address}")
         if not w3.is_address(model.address):
+            logger.debug(f"{model.address} - невалидный адрес")
             raise InvalidAddress
         logger.debug(f"адрес провалидирован")
         signable_message = encode_defunct(text=model.message)

@@ -23,6 +23,8 @@ class Service:
     async def delete(self, address: str):
         if address == core.config.settings.ROOT_ADDRESS:
             raise DeleteRootAddress
+        if not w3.is_address(address):
+            raise InvalidAddress
         result = await self.repository.delete(address.lower())
 
     async def get_list(self):

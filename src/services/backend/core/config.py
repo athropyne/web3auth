@@ -18,7 +18,6 @@ class Settings(BaseSettings):
     TOKEN_SECRET_KEY: str = "supersecretkey"
     ETH_NODE_HTTP_PROVIDER_URI: HttpUrl = "https://mainnet.infura.io/v3/13bc3152bbde404583eb96f7f771d10e"
     ROOT_ADDRESS: str
-    RAW_MESSAGE_FOR_SING: str = "sign this message please"
     SERVER_HOST: str = "0.0.0.0"
     SERVER_PORT: int = 8000
     DEBUG: bool = False

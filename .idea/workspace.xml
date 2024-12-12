@@ -5,28 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2960b4b3-ebb9-428c-bc14-c27d47b22e3d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/infrastructures.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/schema.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/security.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/accounts/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/accounts/dto.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/accounts/exc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/accounts/repository.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/accounts/routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/accounts/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/security/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/security/dto.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/security/exc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/security/repository.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/security/routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/security/service.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backend/core/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backend/core/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backend/core/infrastructures.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backend/core/infrastructures.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backend/services/accounts/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backend/services/accounts/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/backend/services/security/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backend/services/security/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +28,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2q1QasKX44sXilGvyV2a9xzqixZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -50,6 +38,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/Work/Web3Auth/src/services/backend",
@@ -93,6 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733827668077</updated>
       <workItem from="1733827682635" duration="32176000" />
+      <workItem from="1734008466703" duration="5784000" />
     </task>
     <servers />
   </component>
