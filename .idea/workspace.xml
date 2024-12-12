@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2960b4b3-ebb9-428c-bc14-c27d47b22e3d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/backend/.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +35,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/work/web3auth/screenshots",
+    "last_opened_file_path": "C:/work/web3auth/src/services/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733827668077</updated>
       <workItem from="1733827682635" duration="32176000" />
-      <workItem from="1734008466703" duration="9282000" />
+      <workItem from="1734008466703" duration="9729000" />
     </task>
     <servers />
   </component>
