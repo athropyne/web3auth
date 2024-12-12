@@ -42,4 +42,4 @@ async def delete(
         address: str,
         service: Service = Depends(Service)
 ):
-    return await service.delete(address)
+    await service.delete(address)

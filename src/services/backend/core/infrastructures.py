@@ -1,4 +1,3 @@
-import asyncpg
 import psycopg
 import sqlalchemy.exc
 import web3
@@ -43,7 +42,7 @@ class Database:
     async def _minimum_fill(self, connection: AsyncConnection):
         cursor: CursorResult = await connection.execute(
             accounts.insert()
-            .values(address=config.settings.ROOT_ADDRESS)
+            .values(address=config.settings.ROOT_ADDRESS.lower())
         )
 
     async def dispose(self):

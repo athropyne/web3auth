@@ -37,15 +37,16 @@
             body: JSON.stringify(auth_data)
         })
         let data = await response.json()
-        if (!response.ok) {
-            error_msg = data
+        if (response.status === 403) {
+            alert(data.detail)
         }
-        localStorage.setItem("access_token", data["access_token"])
-        await goto("/admin-panel")
-
-
+        else {
+            localStorage.setItem("access_token", data["access_token"])
+            await goto("/admin-panel")
+        }
     }
 </script>
 <main>
+
     <button onclick="{auth}">SIGN</button>
 </main>

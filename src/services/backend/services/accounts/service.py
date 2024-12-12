@@ -5,6 +5,7 @@ from core.infrastructures import w3
 from services.accounts.dto import CreateModel
 from services.accounts.exc import InvalidAddress, DeleteRootAddress
 from services.accounts.repository import Repository
+from services.accounts.dto import ResponseCreatedModel
 
 
 class Service:
@@ -15,14 +16,14 @@ class Service:
     async def create(self, model: CreateModel):
         if not w3.is_address(model.address):
             raise InvalidAddress
+        model.address = model.address.lower()
         result = await self.repository.create(model.model_dump())
-        return f"адрес {result['address']} успешно добавлен"
+        return ResponseCreatedModel(address=result['address'])
 
     async def delete(self, address: str):
         if address == core.config.settings.ROOT_ADDRESS:
             raise DeleteRootAddress
-        result = await self.repository.delete(address)
-        return f"адрес {result['address']} успешно удален"
+        result = await self.repository.delete(address.lower())
 
     async def get_list(self):
         return await self.repository.get_list()

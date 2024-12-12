@@ -17,16 +17,72 @@
         console.log(addresses)
     })
 
-    const add_address = async () => {
-        
+    const add_address = async (address) => {
+        if (!address) return
+        new_address_value = null
+        let response = await fetch(`${PUBLIC_SERVER_URI}/accounts`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("access_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({address: address})
+        })
+        let data = await response.json()
+        if (response.ok) {
+            addresses.push(address)
+        }
+        else if (response.status === 401) {
+            await goto("/")
+        }
+        else if (response.status === 400) {
+            alert(data.detail)
+        }
+        else {
+            console.log(data.detail)
+        }
     }
+
+    const delete_address = async (address) => {
+        let response = await fetch(`${PUBLIC_SERVER_URI}/accounts/${address}`, {
+                method: "DELETE",
+                headers: {"Authorization": `Bearer ${localStorage.getItem("access_token")}`}
+            }
+        )
+        if (response.ok) {
+            let index = addresses.indexOf(address)
+            addresses.splice(index, 1)
+        }
+        else if (response.status === 401) {
+            await goto("/")
+        }
+        else if (response.status === 400 || response.status === 404 || response.status === 403) {
+            let data = await response.json()
+            alert(data.detail)
+        }
+        else {
+            let data = await response.json()
+            console.log(data.detail)
+        }
+    }
+
+
+
 </script>
 
 <main>
     <div class="col address__list__wrapper">
         <ul class="address__list">
             {#each addresses as address (address)}
-                <li class="address__text">{address}</li>
+                <li class="address__item">
+                    <span class="address__text">{address}</span>
+                    <button
+                            class="address__delete__button"
+                            onclick="{async () => await delete_address(address)}"
+
+                    >X
+                    </button>
+                </li>
             {/each}
         </ul>
     </div>
@@ -34,9 +90,11 @@
         <div class="form">
             <input
                     bind:value={new_address_value}
-                    placeholder="добавмть адрес"
+                    placeholder="добавить адрес"
             >
-            <button>отправить</button>
+            <button
+                onclick="{async () => await add_address(new_address_value)}"
+            >отправить</button>
         </div>
 
     </div>
@@ -72,11 +130,16 @@
         display: flex;
         width: 100%;
     }
+
     .form input {
         width: 100%;
     }
 
-    .address__text {
+    .address__item {
         list-style-type: none;
+        display: flex;
+    }
+    .address__delete__button {
+        border: none;
     }
 </style>
